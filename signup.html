@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+    <link rel="stylesheet" href="frontend.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Canara Bank</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="signup.html">Sign up</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="form_container">
+          <div class="left_sub">
+            <h1 style="color: gray;">Signup</h1><br>
+            <form action="signup">
+        
+                <!-- <label for="">Username<i style="color: red;">*</i></label> -->
+                <input type="text" name="name" placeholder="Create username" required>
+                <!-- <label for="">Password<i style="color: red;">*</i></label> -->
+                <input type="password" name="pass" placeholder="Create password" required>
+                <!-- <label for="">Email<i style="color: red;">*</i></label> -->
+                <input type="email" name="email" placeholder="Enter email" required>
+                <!-- <label for="">Contact No.<i style="color: red;">*</i></label> -->
+                <input type="number" name="contact" placeholder="Enter mobile no." required>
+                
+                <div style="display: flex;align-items: center;gap: 10px;">
+                    <input type="checkbox" style="width: 19px;" required id="check"> <label for="check">Terms & conditions</label>
+
+                </div>
+                <button id="click">Register</button>
+            </form>
+          </div>
+          <div class="right_sub">
+            <img style="transform: scale(1);" src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7963.jpg?semt=ais_hybrid"  alt="">
+          </div>
+        </div>
+    </main>
+</body>
+</html>

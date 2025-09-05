@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log in</title>
+    <link rel="stylesheet" href="frontend.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Canara Bank</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="signup.html">Sign up</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form_container">
+            <div class="left_sub">
+                <h1 style="color: gray;">Login </h1><br>
+            <form action="login">
+                <label for="">User Type</label>
+            	<select name="type" id="" style="padding: 10px;border-radius: 4px;border: 2px solid grey;">
+                	<option value="admin">Admin</option>
+                	<option value="user">User</option>
+            	</select>
+            	<!-- <label for="">Username<i style="color: red;">*</i></label> -->
+            	<input type="text" name="name" placeholder="Username" required>
+            	<!-- <label for="">Password<i style="color: red;">*</i></label> -->
+            	<input type="password" name="pass" placeholder="Password" required>
+            	<a href="#" style="color: purple;text-decoration: underline;">Forget Password</a>
+
+            	<button>Login</button>
+            </form>
+    </div>
+    <div class="right_sub">
+        <img style="transform: translateY(24px);" src="https://img.freepik.com/free-vector/hand-drawn-vpn-illustration_23-2149229495.jpg" alt="">
+            <!-- <img src="https://static.vecteezy.com/system/resources/previews/016/462/187/non_2x/forgot-the-password-illustration-concept-on-white-background-vector.jpg" alt=""> -->
+        </div>
+    </div>
+    </main>
+</body>
+</html>

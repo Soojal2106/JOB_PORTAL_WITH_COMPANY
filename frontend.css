@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+header{
+    display: flex;
+    position: sticky;
+    top: 0;
+    /* width: 100vw; */
+    padding: 10px;
+    align-items: center;
+    background: linear-gradient(to right,rgb(10, 100, 203),rgb(3, 145, 180));
+    /* background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMMcYGDVCwfV9S_bGOFSkcIWt1NXAC1dWvxjLSBkLqSYRQ9tKH-BxFh11wLblcvXATiUs&usqp=CAU); */
+    box-shadow: 0 0px 4px rgb(122, 122, 122);
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: space-around;
+    color: white;
+    z-index: 999;
+
+}
+header nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+header nav ul li{
+    /* background: rgb(191, 0, 255); */
+    transition: .5s;
+    position: relative;
+    padding: 4px 8px;
+    /* border: 1.6px solid rgb(255, 255, 255); */
+}
+header nav ul li a{
+    border-radius: 4px;
+    font-size: 17px;
+    color: rgb(255, 255, 255);
+}
+header nav ul li a::before{
+    content: '';
+    position: absolute;
+    background: rgb(255, 255, 255);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    z-index: -1;
+    /* display: none; */
+    transition: .3s;
+    border-radius: 3px;
+
+}
+header nav ul li a:hover::before{
+    height: 100%;
+    display: block;
+    /* transform: rotate(360deg); */
+}
+header nav ul li a:hover{
+    color: rgb(0, 0, 0);
+    /* z-index: 11; */
+}
+
+main{
+    /* background:linear-gradient(to right,rgba(241, 216, 230, 0.648),rgba(190, 206, 214, 0.795)) ; */
+    display: flex;
+    /* width: 100vw; */
+    height: 90vh;
+    padding: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: fit-content; */
+    background: url(https://blog.quickwork.co/content/images/size/w2000/2021/10/Banking-as-a-Service.jpg) no-repeat ;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+}
+.form_container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width:1000px;
+    max-width: 940px;
+    /* border: 2px solid rgb(153, 153, 153); */
+    padding: 20px;
+    border-radius: 4px;
+    background:white;
+    box-shadow: 0 0 500px .5px rgb(85, 96, 210);
+
+}
+.form_container img{
+    object-fit: cover;
+    height: 400px;
+    width: 400px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+form input{
+    height: 30px;
+    width: 300px;
+    /* padding: 4px; */
+    /* border-radius: 4px; */
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(132, 132, 132);
+    font-size: 16px;
+}
+form textarea{
+    padding: 8px 4px;
+    height: 100px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 2px solid rgb(132, 132, 132);
+    resize: none;
+
+}
+button{
+    padding: 10px;
+    background: rgba(10, 79, 152, 0.838);
+    color: white;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s;
+}
+button:hover{
+    background: rgb(5, 118, 122);
+}

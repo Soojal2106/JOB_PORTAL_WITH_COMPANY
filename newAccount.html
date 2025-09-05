@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="backend.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            Canara Bank
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="newAccount.html">NewAccount</a></li>
+                <li><a href="tr.html">Transfer</a></li>
+                <li><a href="debit.html">Debit</a></li>
+                <li><a href="credit.html">Credit</a></li>
+                <li><a href="balance.html">CheckBalance</a></li>
+                <li><a href="tr_His.html">TransactionHistory</a></li>
+                <li><a href="ch_pass.html">ChangePassword</a></li>
+                <li><a href="logout">LogOut</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <main class="newAccount_container">
+        <div class="form_container">
+            <h1 style="color: gray;">New Account</h1><br>
+            <form action="account">
+        
+               <div>
+                 <!-- <label for="">Username<i style="color: red;">*</i></label> -->
+                 <input type="text" name="name" placeholder="Enter Name" required>
+                 <!-- <label for="">Password<i style="color: red;">*</i></label> -->
+                 <input type="number" name="adhar" placeholder="Adhar Number" required>
+               </div>
+               <div>
+                 <!-- <label for="">Email<i style="color: red;">*</i></label> -->
+                 <input type="email" name="email" placeholder="Enter email" required>
+                 <!-- <label for="">Contact No.<i style="color: red;">*</i></label> -->
+                 <input type="number" name="mobile" placeholder="Enter mobile no." required>
+               </div>
+               <div>
+                <!-- <label for="">Email<i style="color: red;">*</i></label> -->
+                <input type="text" name="Fname" placeholder="Father Name" required>
+                <!-- <label for="">Contact No.<i style="color: red;">*</i></label> -->
+                <input type="text" name="Atype" placeholder="Account Type" required>
+              </div>
+              <div>
+                <!-- <label for="">Email<i style="color: red;">*</i></label> -->
+                <input type="number" name="Sbalance" placeholder="Submit Balance" required>
+                <!-- <label for="">Contact No.<i style="color: red;">*</i></label> -->
+                <input type="text" name="gender" placeholder="Gender" required>
+              </div>
+               
+                
+                <div style="display: flex;align-items: center;gap: 10px;">
+                    <input type="checkbox" style="width: 19px;" required id="check"> <label for="check">Terms & conditions</label>
+
+                </div>
+                <button id="click">Open Account</button>
+            </form>
+          </div>
+    </main>
+</body>
+</html>
