@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Company Dashboard</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121934;
+      --muted:#9aa4c7;
+      --text:#e8ecff;
+      --accent:#6aa6ff;
+      --accent-2:#7ef0c1;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header{
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      border-bottom-left-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+      color:#0b1020;
+    }
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      margin: 20px 0;
+    }
+    nav form, nav a{
+      display:inline;
+    }
+    nav button{
+      padding:10px 18px;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:600;
+      background:linear-gradient(135deg,var(--accent-2),#36cba5);
+      color:#0b1020;
+      transition: transform .2s;
+    }
+    nav button:hover{transform: translateY(-2px)}
+    main{
+      max-width: 1000px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:20px;
+      padding: 20px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      padding:20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.3);
+      text-align:center;
+    }
+    .card h3{margin-top:0;margin-bottom:12px}
+    .card p{margin:0;color:var(--muted);}
+  </style>
+</head>
+<body>
+  <button class="btn" onclick="history.back()">← Back</button>
+
+  <header>
+    Company Dashboard / कंपनी डैशबोर्ड <br>
+    <span th:text="${company.companyName}"></span>
+  </header>
+
+  <nav>
+    <a th:href="@{/company/viewJobs}"><button>View Jobs</button></a>
+    <a th:href="@{/company/postJob}"><button>Post Job</button></a>
+    <a th:href="@{/company/applications}"><button>Applications</button></a>
+    <a th:href="@{/company/profile}"><button>Profile</button></a>
+
+    <!-- Logout form -->
+   <form th:action="@{/company/logout}" method="get">
+    <button type="submit" onclick="return confirm('Are you sure you want to logout?')">Logout</button>
+</form>
+
+    
+  </nav>
+
+  <main>
+    <div class="card">
+      <h3>Posted Jobs</h3>
+      <p th:text="${postedJobsCount} + ' Jobs Posted'"></p>
+    </div>
+    <div class="card">
+      <h3>New Applications</h3>
+      <p th:text="${newApplications} + ' Applications'"></p>
+    </div>
+    <div class="card">
+      <h3>Active Jobs</h3>
+      <p th:text="${activeJobs} + ' Jobs Active'"></p>
+    </div>
+    <div class="card">
+      <h3>Company Profile</h3>
+      <p>Edit Profile Details</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="/UserCss/UserStyle.css">
+</head>
+<body>
+  <button class="btn" onclick="history.back()">← Back</button>
+
+  <div class="container">
+    <h1>User Profile</h1>
+    <div class="card">
+      <div class="field">
+        <label>User ID</label>
+        <span th:text="${user.userId}">U12345</span>
+      </div>
+      <div class="field">
+        <label>Name</label>
+        <span th:text="${user.userName}">John Doe</span>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <span th:text="${user.userEmail}">john@example.com</span>
+      </div>
+      <div class="field">
+        <label>Mobile No</label>
+        <span th:text="${user.userPhone}">9876543210</span>
+      </div>
+      <div class="field">
+        <label>City</label>
+        <span th:text="${user.userCity}">Satna</span>
+      </div>
+      <div class="field">
+        <label>State</label>
+        <span th:text="${user.userState}">Madhya Pradesh</span>
+      </div>
+      <div class="field">
+        <label>Country</label>
+        <span th:text="${user.userCountry}">India</span>
+      </div>
+      <div class="field">
+        <label>Highest Education</label>
+        <span th:text="${user.userEducation}">B.Tech (CSE)</span>
+      </div>
+      <div class="field">
+        <label>Experience</label>
+        <span th:text="${user.userExperince}">2 Years</span>
+      </div>
+
+      <!-- Buttons -->
+      <button class="btn" th:onclick="|window.location.href='@{/users/editProfile}'|">Edit Profile</button>
+      <button class="btn secondary" th:onclick="|window.location.href='@{/users/userDashboard}'|">Back to Dashboard</button>
+    </div>
+  </div>
+</body>
+</html>

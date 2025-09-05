@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="/UserCss/UserStyle.css">
+
+</head>
+<body>
+    <button class="btn" onclick="history.back()">← Back</button>
+
+  <div class="container">
+    <!-- Dynamic User Name -->
+    <h1>Welcome, <span th:text="${user.userName}">John Doe</span></h1>
+
+    <!-- Actions Card -->
+    <div class="card">
+      <h2>Dashboard</h2>
+      <button class="btn" th:onclick="|window.location.href='@{/users/currentJobs}'|">View Current Jobs</button>
+      <button class="btn" th:onclick="|window.location.href='@{/users/appliedJobs}'|">Applied Jobs</button>
+      <button class="btn" th:onclick="|window.location.href='@{/users/profile}'|">Profile</button>
+      <button type="button" class="btn secondary"
+        onclick="if(confirm('Are you sure you want to logout?')) window.location.href='/users/logout'">
+  Logout
+</button>
+
+    </div>
+  </div>
+</body>
+</html>

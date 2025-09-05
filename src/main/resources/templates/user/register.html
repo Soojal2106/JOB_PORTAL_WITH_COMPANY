@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Registration</title>
+  <link rel="stylesheet" href="/UserCss/UserStyle.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">U</div>
+      <div>
+        <h1>User Registration / यूज़र पंजीकरण</h1>
+        <div class="muted">Apply for job by filling this form • नौकरी के लिए आवेदन करने हेतु फ़ॉर्म भरें</div>
+      </div>
+    </header>
+
+    <section class="card">
+      <form th:action="@{/users/save}" th:object="${user}" method="post">
+
+        <!-- User ID + Name -->
+        <div class="field col-6">
+          <label>User ID <span class="req">*</span></label>
+          <input type="text" th:field="*{userId}" placeholder="USR-001" required>
+        </div>
+
+        <div class="field col-6">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" th:field="*{userName}" placeholder="Your Name" required>
+        </div>
+
+        <!-- Email + Phone -->
+        <div class="field col-6">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" th:field="*{userEmail}" placeholder="name@example.com" required>
+        </div>
+
+        <div class="field col-6">
+          <label>Phone</label>
+          <input type="text" th:field="*{userPhone}" placeholder="9876543210">
+        </div>
+
+        <!-- Password -->
+        <div class="field col-12">
+          <label>Password</label>
+          <input type="password" th:field="*{userPassword}" placeholder="••••••">
+        </div>
+
+        <!-- City + State + Country -->
+        <div class="field col-4">
+          <label>City</label>
+          <input type="text" th:field="*{userCity}" placeholder="Satna">
+        </div>
+
+        <div class="field col-4">
+          <label>State</label>
+          <input type="text" th:field="*{userState}" placeholder="Madhya Pradesh">
+        </div>
+
+        <div class="field col-4">
+          <label>Country</label>
+          <input type="text" th:field="*{userCountry}" placeholder="India">
+        </div>
+
+        <!-- Education + Experience -->
+        <div class="field col-6">
+          <label>Education</label>
+          <input type="text" th:field="*{userEducation}" placeholder="Bachelor's Degree">
+        </div>
+
+        <div class="field col-6">
+          <label>Experience</label>
+          <input type="text" th:field="*{userExperince}" placeholder="2 Years">
+        </div>
+
+        <!-- Buttons -->
+        <div class="col-12" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+          <button type="submit" class="btn">Register</button>
+          <button type="reset" class="btn secondary">Reset</button>
+          <a href="/users/login" class="btn secondary" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Already Registered?</a>
+        </div>
+
+      </form>
+    </section>
+  </div>
+</body>
+</html>

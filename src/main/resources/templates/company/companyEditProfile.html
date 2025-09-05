@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edit Company Profile</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121934;
+      --muted:#9aa4c7;
+      --text:#e8ecff;
+      --accent:#6aa6ff;
+      --accent-2:#7ef0c1;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+      padding:20px;
+    }
+    h1{text-align:center;margin-bottom:20px}
+    .profile-container{
+      display:flex;
+      justify-content:center;
+    }
+    .profile-card{
+      background: var(--card);
+      border-radius: var(--radius);
+      padding:30px;
+      width:400px;
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+    }
+    label{
+      display:block;
+      font-weight:600;
+      margin-top:10px;
+      color:var(--accent-2);
+    }
+    input{
+      width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.2);
+      background:#0f1530;
+      color:var(--text);
+      font-size:15px;
+      margin-top:4px;
+    }
+    .btn{
+      display:block;
+      width:100%;
+      padding:12px;
+      margin-top:20px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#0b1020;
+      font-weight:700;
+      cursor:pointer;
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn" onclick="history.back()">← Back</button>
+
+  <h1>Edit Company Profile / कंपनी प्रोफ़ाइल संपादित करें</h1>
+  <div class="profile-container">
+    <div class="profile-card">
+      <!-- Thymeleaf form binding -->
+      <form th:action="@{/company/update}" th:object="${company}" method="post">
+        
+        <label for="companyName">Company Name</label>
+        <input type="text" id="companyName" th:field="*{companyName}" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" th:field="*{email}" readonly>
+
+        <label for="address">Address</label>
+        <input type="text" id="address" th:field="*{address}" required>
+
+        <label for="industry">Field / Industry</label>
+        <input type="text" id="industry" th:field="*{industry}" required>
+
+        <button type="submit" class="btn">Update Profile</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Post Job</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121934;
+      --muted:#9aa4c7;
+      --text:#e8ecff;
+      --accent:#6aa6ff;
+      --accent-2:#7ef0c1;
+      --danger:#ff6b6b;
+      --good:#27d980;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+      padding:20px;
+    }
+    h1{text-align:center;margin-bottom:20px}
+    form{
+      max-width:600px;
+      margin:0 auto;
+      display:grid;
+      gap:16px;
+      background: var(--card);
+      padding:20px;
+      border-radius:var(--radius);
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+    }
+    label{font-weight:600}
+    input, select, textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.2);
+      background:#0f1530;
+      color:var(--text);
+      font-size:15px;
+    }
+    .btn{
+      padding:12px;
+      border:none;
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--accent),#4f7edb);
+      color:#0b1020;
+      margin-top:10px;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn" onclick="history.back()">← Back</button>
+
+  <h1>Post a Job / नौकरी पोस्ट करें</h1>
+
+  <!-- Spring Boot + Thymeleaf form -->
+  <form th:action="@{/jobs/save}" th:object="${job}" method="post">
+
+    <label for="title">Job Title <span style="color:red">*</span></label>
+<select id="title" name="title" th:field="*{title}" required>
+    <option value="" disabled selected>Select Job Title</option>
+
+    <optgroup label="1️⃣ Software Development & Programming">
+        <option value="Software Engineer / Developer">Software Engineer / Developer</option>
+        <option value="Full Stack Developer">Full Stack Developer</option>
+        <option value="Front-end Developer">Front-end Developer</option>
+        <option value="Back-end Developer">Back-end Developer</option>
+        <option value="Mobile App Developer (Android/iOS/Kotlin/Swift)">Mobile App Developer (Android/iOS/Kotlin/Swift)</option>
+        <option value="Game Developer">Game Developer</option>
+        <option value="Embedded Systems Developer">Embedded Systems Developer</option>
+    </optgroup>
+
+    <optgroup label="2️⃣ Web Development">
+        <option value="Web Developer">Web Developer</option>
+        <option value="UI/UX Developer / Designer">UI/UX Developer / Designer</option>
+        <option value="React / Angular / Vue Developer">React / Angular / Vue Developer</option>
+        <option value="WordPress / CMS Developer">WordPress / CMS Developer</option>
+    </optgroup>
+
+    <optgroup label="3️⃣ Data & Analytics">
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Data Scientist">Data Scientist</option>
+        <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+        <option value="AI Engineer">AI Engineer</option>
+        <option value="Big Data Engineer / Hadoop Developer">Big Data Engineer / Hadoop Developer</option>
+        <option value="Business Intelligence (BI) Developer">Business Intelligence (BI) Developer</option>
+    </optgroup>
+
+    <optgroup label="4️⃣ Networking & Security">
+        <option value="Network Engineer">Network Engineer</option>
+        <option value="Cybersecurity Analyst / Engineer">Cybersecurity Analyst / Engineer</option>
+        <option value="Ethical Hacker / Penetration Tester">Ethical Hacker / Penetration Tester</option>
+        <option value="Security Consultant">Security Consultant</option>
+        <option value="System Administrator (Linux/Windows)">System Administrator (Linux/Windows)</option>
+    </optgroup>
+
+    <optgroup label="5️⃣ Database & Cloud">
+        <option value="Database Administrator (DBA)">Database Administrator (DBA)</option>
+        <option value="SQL Developer / NoSQL Developer">SQL Developer / NoSQL Developer</option>
+        <option value="Cloud Engineer (AWS, Azure, GCP)">Cloud Engineer (AWS, Azure, GCP)</option>
+        <option value="DevOps Engineer">DevOps Engineer</option>
+    </optgroup>
+
+    <optgroup label="6️⃣ AI, Robotics & Advanced Tech">
+        <option value="AI Researcher / Engineer">AI Researcher / Engineer</option>
+        <option value="Robotics Engineer">Robotics Engineer</option>
+        <option value="Computer Vision Engineer">Computer Vision Engineer</option>
+        <option value="NLP Engineer (Natural Language Processing)">NLP Engineer (Natural Language Processing)</option>
+    </optgroup>
+
+    <optgroup label="7️⃣ Testing & Quality">
+        <option value="QA Engineer / Tester">QA Engineer / Tester</option>
+        <option value="Automation Tester (Selenium, Appium)">Automation Tester (Selenium, Appium)</option>
+        <option value="Software Test Engineer in Test (SET)">Software Test Engineer in Test (SET)</option>
+    </optgroup>
+
+    <optgroup label="8️⃣ IT Support & Management">
+        <option value="IT Support Engineer">IT Support Engineer</option>
+        <option value="Technical Support Engineer">Technical Support Engineer</option>
+        <option value="IT Project Manager / Technical Project Manager">IT Project Manager / Technical Project Manager</option>
+        <option value="Product Manager (Tech)">Product Manager (Tech)</option>
+    </optgroup>
+
+    <optgroup label="9️⃣ Other Emerging Roles">
+        <option value="Blockchain Developer">Blockchain Developer</option>
+        <option value="IoT Developer">IoT Developer</option>
+        <option value="AR/VR Developer">AR/VR Developer</option>
+        <option value="Cloud Solutions Architect">Cloud Solutions Architect</option>
+    </optgroup>
+</select>
+
+
+    <label for="location">Location <span style="color:red">*</span></label>
+    <input type="text" th:field="*{location}" placeholder="City, State" required>
+
+    <label for="jobType">Job Type <span style="color:red">*</span></label>
+    <select th:field="*{jobType}" required>
+      <option value="" disabled selected>Select Job Type</option>
+      <option>Full Time</option>
+      <option>Part Time</option>
+      <option>Internship</option>
+      <option>Contract</option>
+    </select>
+
+    <label for="experience">Experience Required <span style="color:red">*</span></label>
+    <input type="text" th:field="*{experience}" placeholder="e.g., 2-5 years" required>
+
+    <label for="salary">Salary (Optional)</label>
+    <input type="text" th:field="*{salary}" placeholder="e.g., 30,000 - 50,000 INR">
+
+    <label for="skills">Required Skills <span style="color:red">*</span></label>
+    <textarea th:field="*{skills}" placeholder="Java, Spring Boot, SQL..." rows="3" required></textarea>
+
+    <label for="description">Job Description <span style="color:red">*</span></label>
+    <textarea th:field="*{description}" placeholder="Describe the role, responsibilities, and requirements" rows="5" required></textarea>
+
+    <button type="submit" class="btn">Post Job</button>
+  </form>
+</body>
+</html>

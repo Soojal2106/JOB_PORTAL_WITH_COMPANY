@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Jobs</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #0b1020; color: #e8ecff; }
+        h1 { text-align: center; color: #6aa6ff; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #121934; text-align: left; }
+        th { background: #121934; color: #7ef0c1; }
+        tr:nth-child(even) { background: #121934; }
+        button { margin-top: 20px; padding: 10px 15px; background: #6aa6ff; border: none; border-radius: 10px; color: #0b1020; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Your Posted Jobs</h1>
+    <button onclick="history.back()">← Back to Dashboard</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Job Title</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Salary</th>
+                <th>Date And time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="job : ${jobs}">
+                <td th:text="${job.title}">Job Title</td>
+                <td th:text="${job.description}">Description</td>
+                <td th:text="${job.location}">Location</td>
+                <td th:text="${job.salary}">Salary</td>
+                <td th:text="${job.postedAt}">Date And Time</td>
+                
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

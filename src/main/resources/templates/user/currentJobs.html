@@ -1,0 +1,75 @@
+ 
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Current Jobs</title>
+    <link rel="stylesheet" href="/UserCss/UserStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert -->
+</head>
+<body class="container mt-5">
+
+<h2 class="mb-4">Current Job Posts</h2>
+
+<!-- ✅ SweetAlert Popup for success/error -->
+<div th:if="${success}">
+    <script th:inline="javascript">
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: [[${success}]],
+            timer: 2000,
+            showConfirmButton: false
+        });
+    </script>
+</div>
+
+<div th:if="${error}">
+    <script th:inline="javascript">
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: [[${error}]],
+        });
+    </script>
+</div>
+
+<!-- जब कोई job available ना हो -->
+<div th:if="${jobs.size() == 0}" class="alert alert-info">
+    <p>No current jobs available.</p>
+</div>
+
+<!-- जब job available हो -->
+<table class="table table-striped" th:if="${jobs.size() > 0}">
+    <thead>
+    <tr>
+        <th>Job Title</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Salary</th>
+        <th>Posted At</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="job : ${jobs}">
+        <td th:text="${job.title}">Job Title</td>
+        <td th:text="${job.company.companyName}">Company</td>
+        <td th:text="${job.location}">Location</td>
+        <td th:text="${job.salary}">Salary</td>
+         <td th:text="${job.postedAt != null ? #temporals.format(job.postedAt, 'dd-MM-yyyy HH:mm') : 'N/A'}">
+                Posted At
+            </td><td>
+            <form th:action="@{'/users/apply/' + ${job.id}}" method="post">
+                <button type="submit" class="btn btn-success btn-sm">Apply</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/users/userDashboard" class="btn btn-primary mt-3">Back to Dashboard</a>
+
+</body>
+</html>
+
+

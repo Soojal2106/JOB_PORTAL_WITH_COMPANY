@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Company Login</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121934;
+      --text:#e8ecff;
+      --accent:#6aa6ff;
+      --accent-2:#7ef0c1;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      padding:20px;
+    }
+    .login-card{
+      background: var(--card);
+      border-radius: var(--radius);
+      padding:30px;
+      width:350px;
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+    }
+    h1{text-align:center;margin-bottom:20px}
+    label{display:block;font-weight:600;margin-top:10px;color:var(--accent-2)}
+    input{
+      width:100%;
+      padding:10px 12px;
+      margin-top:4px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.2);
+      background:#0f1530;
+      color:var(--text);
+      font-size:15px;
+    }
+    .btn{
+      width:100%;
+      padding:12px;
+      margin-top:20px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#0b1020;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .muted{text-align:center;margin-top:12px;color:#9aa4c7;font-size:14px;}
+  </style>
+</head>
+<body>
+     
+
+  <div class="login-card">
+    <h1>Company Login / कंपनी लॉगिन</h1>
+    <form th:action="@{/company/login}" method="post">
+  <label for="companyEmail">Email</label>
+  <input type="email" id="companyEmail" name="companyEmail" placeholder="abc@company.com" required>
+
+  <label for="companyPassword">Password</label>
+  <input type="password" id="companyPassword" name="companyPassword" placeholder="••••••" required>
+
+  <button type="submit" class="btn">Login</button>
+</form>
+
+<div class="muted">
+  Don't have an account? 
+  <a th:href="@{/company/register}">Register here</a>
+</div>
+
+<p style="color:red;" th:text="${error}"></p>
+
+
+  <script>
+    const form = document.getElementById('companyLoginForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('companyEmail').value;
+      const password = document.getElementById('companyPassword').value;
+      console.log('Company login attempt:', {email, password});
+      alert('Login successful! (Demo)');
+      window.location.href = 'companyDashboard.html';
+    });
+  </script>
+</body>
+</html>

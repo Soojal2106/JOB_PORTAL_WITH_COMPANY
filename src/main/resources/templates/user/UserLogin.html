@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Login</title>
+   <link rel="stylesheet" href="/UserCss/UserStyle.css">
+</head>
+<body>
+  <div class="card">
+    <h1>User Login</h1>
+
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+
+    <form th:action="@{/users/login}" method="post">
+      <label for="email">Email / Mobile No</label>
+      <input type="text" id="email" name="email" placeholder="Enter your email or mobile" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+    
+    <span class="link" th:onclick="|window.location.href='@{/users/register}'|">
+    Don't have an account? Register
+</span>
+ </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Job Applications</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+<h2 class="mb-4">Applications on Your Jobs</h2>
+
+<!-- अगर कोई application नहीं है -->
+<div th:if="${applications.size() == 0}" class="alert alert-info">
+    <p>No applications received yet.</p>
+</div>
+
+<!-- अगर applications हैं -->
+<table class="table table-bordered table-hover" th:if="${applications.size() > 0}">
+    <thead class="table-dark">
+    <tr>
+        <th>Job Title</th>
+        <th>Applicant Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Education</th>
+        <th>Experience</th>
+        <th>Applied On</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="app : ${applications}">
+        <td th:text="${app.job.title}">Job</td>
+        <td th:text="${app.user.userName}">Applicant Name</td>
+        <td th:text="${app.user.userEmail}">Email</td>
+        <td th:text="${app.user.UserPhone}">Phone</td>
+        <td th:text="${app.user.UserCity}">City</td>
+        <td th:text="${app.user.userState}">State</td>
+        <td th:text="${app.user.userCountry}">Country</td>
+        <td th:text="${app.user.userEducation}">Education</td>
+        <td th:text="${app.user.userExperince}">Experience</td>
+        <td th:text="${#temporals.format(app.appliedAt, 'dd-MM-yyyy HH:mm')}">Applied Date</td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/company/dashboard" class="btn btn-primary mt-3">Back to Dashboard</a>
+
+</body>
+</html>
