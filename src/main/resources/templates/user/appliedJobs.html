@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Applied Jobs</title>
- <link rel="stylesheet" href="/UserCss/UserStyle.css">
+    <link rel="stylesheet" href="/UserCss/UserStyle.css">
 </head>
 <body class="container mt-5">
 
@@ -18,8 +18,10 @@
         <th>Job Title</th>
         <th>Company</th>
         <th>Location</th>
+        <th>Experience</th>
         <th>Salary</th>
         <th>Applied On</th>
+        <th>Status</th> <!-- नया column -->
     </tr>
     </thead>
     <tbody>
@@ -27,8 +29,10 @@
         <td th:text="${app.job.title}">Job Title</td>
         <td th:text="${app.job.company.companyName}">Company</td>
         <td th:text="${app.job.location}">Location</td>
+        <td th:text="${app.job.expirence}">Experience</td>
         <td th:text="${app.job.salary}">Salary</td>
         <td th:text="${#temporals.format(app.appliedAt, 'dd-MM-yyyy HH:mm')}">Applied Date</td>
+        <td th:text="${app.status}">Status</td> <!-- status दिखाना -->
     </tr>
     </tbody>
 </table>
