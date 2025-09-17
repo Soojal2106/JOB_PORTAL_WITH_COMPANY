@@ -11,10 +11,10 @@
     <button class="btn" onclick="history.back()">← Back</button>
 
   <div class="container">
-    <!-- Dynamic User Name -->
+
     <h1>Welcome, <span th:text="${user.userName}">John Doe</span></h1>
 
-    <!-- Actions Card -->
+
     <div class="card">
       <h2>Dashboard</h2>
       <button class="btn" th:onclick="|window.location.href='@{/users/currentJobs}'|">View Current Jobs</button>

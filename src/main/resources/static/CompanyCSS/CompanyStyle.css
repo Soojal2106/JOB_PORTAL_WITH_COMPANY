@@ -1,0 +1,250 @@
+/* =========================
+   Root Variables (Theme)
+========================= */
+:root {
+    --bg: #f5f6fa;             /* light gray background for clarity */
+    --card: #ffffff;           /* white cards for readability */
+    --muted: #7f8fa6;          /* muted text */
+    --text: #2f3640;           /* main text dark gray */
+    --accent: #0097e6;         /* primary accent blue */
+    --accent-2: #00a8ff;       /* secondary accent sky blue */
+    --danger: #e84118;         /* red for errors/logouts */
+    --good: #44bd32;           /* green for success */
+    --radius: 12px;            /* card/button radius */
+    --font: 'Segoe UI', 'Roboto', 'Inter', sans-serif;
+}
+
+/* =========================
+   Global Styles
+========================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================
+   Headings
+========================= */
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h1 { color: var(--accent); }
+h2, h3 { color: var(--accent-2); }
+
+/* =========================
+   Cards
+========================= */
+.card, .login-card, .profile-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    padding: 25px;
+    width: 400px;
+    max-width: 95%;
+    margin-bottom: 20px;
+}
+/* Dashboard cards layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.dashboard .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dashboard .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.dashboard .card h3 {
+    color: var(--accent-2);
+    margin-bottom: 12px;
+}
+
+.dashboard .card p {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* =========================
+   Forms
+========================= */
+form {
+    display: grid;
+    gap: 14px;
+}
+
+label {
+    font-weight: 600;
+    color: var(--text);
+    display: block;
+}
+
+input, select, textarea, .form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #dcdde1;
+    background: #f1f2f6;
+    color: var(--text);
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+input:focus, select:focus, textarea:focus, .form-control:focus {
+    background: #ffffff;
+    border-color: var(--accent);
+    box-shadow: 0 0 6px rgba(0,168,255,0.4);
+    outline: none;
+}
+
+/* =========================
+   Buttons
+========================= */
+.btn, .btn-primary, nav button {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #ffffff;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.btn:hover, .btn-primary:hover, nav button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,168,255,0.5);
+}
+
+.btn-danger { background: linear-gradient(135deg, var(--danger), #ff5e57); }
+.btn-good { background: linear-gradient(135deg, var(--good), #4cd137); }
+.btn-back { background: linear-gradient(135deg, #ff6b6b, #ff9f43); }
+
+/* =========================
+   Nav Bar
+========================= */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+nav a {
+    flex: 1 1 160px;
+    text-decoration: none;
+}
+
+nav form {
+    flex: 1 1 160px;
+}
+
+nav button {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: var(--radius);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--accent-2), var(--accent));
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,168,255,0.4);
+}
+
+/* =========================
+   Tables
+========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #dcdde1;
+    text-align: left;
+}
+
+th { background: var(--accent); color: #ffffff; }
+tr:nth-child(even) { background: #f1f2f6; }
+
+/* =========================
+   Profile Fields
+========================= */
+.profile-field {
+    margin-bottom: 15px;
+}
+
+.profile-field span {
+    display: block;
+    font-weight: 600;
+    color: var(--accent-2);
+    margin-bottom: 4px;
+}
+
+.profile-field p {
+    margin: 0;
+    color: var(--text);
+    background: #f1f2f6;
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+/* =========================
+   Utility Classes
+========================= */
+.muted {
+    text-align: center;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 600px) {
+    .card, .login-card, .profile-card { width: 95%; padding: 20px; }
+    input, select, textarea { font-size: 14px; }
+    nav { flex-direction: column; }
+}

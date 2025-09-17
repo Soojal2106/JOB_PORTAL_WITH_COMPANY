@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Edit Profile</title>
-   <link rel="stylesheet" href="/UserCss/UserStyle.css">
+  <link rel="stylesheet" href="/UserCss/UserStyle.css">
 </head>
 <body>
   <button class="btn" onclick="history.back()">← Back</button>
@@ -13,56 +13,66 @@
     <h1>Edit Profile</h1>
     <div class="card">
       <!-- Thymeleaf form -->
+      
       <form th:action="@{/users/update}" th:object="${user}" method="post">
-    <label for="userName">Name</label>
-    <input type="text" id="userName" th:field="*{userName}" required>
 
-    <label for="userEmail">Email</label>
-    <input type="email" id="userEmail" th:field="*{userEmail}" required readonly>
+         <label for="userEmail">Aadhar Id </label>
+        <input type="text" id="userId" th:field="*{userId}" readonly>
+       
+        <label for="userName">Name</label>
+        <input type="text" id="userName" th:field="*{userName}" required>
 
-    <label for="userPassword">Password</label>
-    <input type="password" id="userPassword" th:field="*{userPassword}" required>
+        <label for="userEmail">Email</label>
+        <input type="email" id="userEmail" th:field="*{userEmail}" readonly>
 
-    <label for="confirmPassword">Confirm Password</label>
-    <input type="password" id="confirmPassword" th:field="*{userPassword}" required>
+        <label for="userPassword">New Password (optional)</label>
+        <input type="password" id="userPassword" th:field="*{userPassword}">
 
-    <label for="UserPhone">Mobile No</label>
-    <input type="tel" id="UserPhone" th:field="*{UserPhone}" required>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword">
 
-    <label for="UserCity">City</label>
-    <input type="text" id="UserCity" th:field="*{UserCity}" required>
+        <label for="userPhone">Mobile No</label>
+        <input type="tel" id="userPhone" th:field="*{userPhone}" readonly>
 
-    <label for="userState">State</label>
-    <select id="userState" th:field="*{userState}" required>
-        <option value="Madhya Pradesh" th:selected="${user.userState == 'Madhya Pradesh'}">Madhya Pradesh</option>
-        <option value="Uttar Pradesh" th:selected="${user.userState == 'Uttar Pradesh'}">Uttar Pradesh</option>
-        <option value="Delhi" th:selected="${user.userState == 'Delhi'}">Delhi</option>
-    </select>
+        <label for="userCity">City</label>
+        <input type="text" id="userCity" th:field="*{userCity}" required>
 
-    <label for="userCountry">Country</label>
-    <select id="userCountry" th:field="*{userCountry}" required>
-        <option value="India" th:selected="${user.userCountry == 'India'}">India</option>
-        <option value="Nepal" th:selected="${user.userCountry == 'Nepal'}">Nepal</option>
-        <option value="Other" th:selected="${user.userCountry == 'Other'}">Other</option>
-    </select>
+        <label for="userState">State</label>
+        <select id="userState" th:field="*{userState}" required>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="Delhi">Delhi</option>
+        </select>
 
-    <label for="userEducation">Highest Education</label>
-    <input type="text" id="userEducation" th:field="*{userEducation}" required>
+        <label for="userCountry">Country</label>
+        <select id="userCountry" th:field="*{userCountry}" required>
+          <option value="India">India</option>
+          <option value="Nepal">Nepal</option>
+          <option value="Other">Other</option>
+        </select>
 
-    <button type="submit" class="btn">Save Changes</button>
-</form>
+        <label for="userEducation">Highest Education</label>
+        <input type="text" id="userEducation" th:field="*{userEducation}" required>
+        
+        <label for="userEducation">Experince</label>
+        <input type="text" id="userExperince" th:field="*{userExperince}" required>
 
+       <button type="submit" class="btn">Save Changes</button>
+      </form>
     </div>
   </div>
 
   <script>
     const form = document.querySelector('form');
     form.addEventListener('submit', e => {
-      const password = document.getElementById('password').value;
-      const confirm = document.getElementById('confirm').value;
-      if(password !== confirm){
-        e.preventDefault();
-        alert('Passwords do not match!');
+      const password = document.getElementById('userPassword').value;
+      const confirm = document.getElementById('confirmPassword').value;
+      
+      if (password || confirm) { 
+        if (password !== confirm) {
+          e.preventDefault();
+          alert('Passwords do not match!');
+        }
       }
     });
   </script>

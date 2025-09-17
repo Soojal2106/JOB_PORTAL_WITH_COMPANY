@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Jobs</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background: #0b1020; color: #e8ecff; }
-        h1 { text-align: center; color: #6aa6ff; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 12px; border: 1px solid #121934; text-align: left; }
-        th { background: #121934; color: #7ef0c1; }
-        tr:nth-child(even) { background: #121934; }
-        button { margin-top: 20px; padding: 10px 15px; background: #6aa6ff; border: none; border-radius: 10px; color: #0b1020; cursor: pointer; }
-    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/CompanyCSS/CompanyStyle.css">
 </head>
 <body>
     <h1>Your Posted Jobs</h1>
-    <button onclick="history.back()">← Back to Dashboard</button>
+    <button class="btn" onclick="history.back()">← Back to Dashboard</button>
 
     <table>
         <thead>
@@ -24,8 +18,11 @@
                 <th>Job Title</th>
                 <th>Description</th>
                 <th>Location</th>
+                <th>Expirence</th> 
                 <th>Salary</th>
                 <th>Date And time</th>
+                <th>Show Applications</th>
+                <th>Job Status</th>
             </tr>
         </thead>
         <tbody>
@@ -33,10 +30,52 @@
                 <td th:text="${job.title}">Job Title</td>
                 <td th:text="${job.description}">Description</td>
                 <td th:text="${job.location}">Location</td>
+                <td th:text="${job.expirence}">Expirence</td>
                 <td th:text="${job.salary}">Salary</td>
                 <td th:text="${job.postedAt}">Date And Time</td>
-                
+                <td>
+                <form th:action="@{'/company/applications/' + ${job.id}}" method="post" class="apply-btn">
+            <button type="submit" class="btn btn-sm btn-primary mt-1">Application</button>
+        </form></td>
+
+                <td>
+                    <form th:action="@{/company/{jobId}/toggle-status(jobId=${job.id})}"
+                          method="post"
+                          onsubmit="return confirmToggle(this)">
+                        <button type="submit" class="btn btn-sm btn-primary mt-1"
+                                th:text="${job.jobStatus.name() == 'ENABLE' ? 'Disable' : 'Enable'}">
+                        </button>
+                    </form>
+                </td>
+                <script>
+                    function confirmToggle(form) {
+                        let buttonText = form.querySelector("button").innerText;
+
+                        // Prevent direct form submit
+                        event.preventDefault();
+
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "Do you really want to " + buttonText + " this job?",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, ' + buttonText + ' it!',
+                            cancelButtonText: 'Cancel'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                form.submit(); // If confirmed then submit form
+                            }
+                        });
+
+                        return false; // Stop normal form submit
+                    }
+                </script>
+
+
             </tr>
+            <tr>
         </tbody>
     </table>
 </body>

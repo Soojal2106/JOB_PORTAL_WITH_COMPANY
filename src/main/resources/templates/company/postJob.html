@@ -3,17 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Post Job</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-</head>
+     <link rel="stylesheet" href="/CompanyCSS/CompanyStyle.css">
 <body class="container mt-5">
 
 <h2>Post a Job</h2>
-<div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+<a class="btn btn-secondary mt-3" th:href="@{/company/dashboard}">← Back to Dashboard</a>
+<br><div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
 
 <form th:action="@{/company/saveJob}" th:object="${job}" method="post">
     <div class="mb-3">
-        <label>Job Title</label>
-        <input type="text" th:field="*{title}" class="form-control" required>
+        <label for="title">Job Title <span style="color:red">*</span></label>
+<select id="title" name="title" th:field="*{title}" required>
+    <option value="" disabled selected>Select Job Title</option>
+
+    <optgroup label="1️⃣ Software Development & Programming">
+        <option value="Software Engineer / Developer">Software Engineer / Developer</option>
+        <option value="Full Stack Developer">Full Stack Developer</option>
+        <option value="Front-end Developer">Front-end Developer</option>
+        <option value="Back-end Developer">Back-end Developer</option>
+        <option value="Mobile App Developer (Android/iOS/Kotlin/Swift)">Mobile App Developer (Android/iOS/Kotlin/Swift)</option>
+        <option value="Game Developer">Game Developer</option>
+        <option value="Embedded Systems Developer">Embedded Systems Developer</option>
+    </optgroup>
+
+    <optgroup label="2️⃣ Web Development">
+        <option value="Web Developer">Web Developer</option>
+        <option value="UI/UX Developer / Designer">UI/UX Developer / Designer</option>
+        <option value="React / Angular / Vue Developer">React / Angular / Vue Developer</option>
+        <option value="WordPress / CMS Developer">WordPress / CMS Developer</option>
+    </optgroup>
+
+    <optgroup label="3️⃣ Data & Analytics">
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Data Scientist">Data Scientist</option>
+        <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+        <option value="AI Engineer">AI Engineer</option>
+        <option value="Big Data Engineer / Hadoop Developer">Big Data Engineer / Hadoop Developer</option>
+        <option value="Business Intelligence (BI) Developer">Business Intelligence (BI) Developer</option>
+    </optgroup>
+
+    <optgroup label="4️⃣ Networking & Security">
+        <option value="Network Engineer">Network Engineer</option>
+        <option value="Cybersecurity Analyst / Engineer">Cybersecurity Analyst / Engineer</option>
+        <option value="Ethical Hacker / Penetration Tester">Ethical Hacker / Penetration Tester</option>
+        <option value="Security Consultant">Security Consultant</option>
+        <option value="System Administrator (Linux/Windows)">System Administrator (Linux/Windows)</option>
+    </optgroup>
+
+    <optgroup label="5️⃣ Database & Cloud">
+        <option value="Database Administrator (DBA)">Database Administrator (DBA)</option>
+        <option value="SQL Developer / NoSQL Developer">SQL Developer / NoSQL Developer</option>
+        <option value="Cloud Engineer (AWS, Azure, GCP)">Cloud Engineer (AWS, Azure, GCP)</option>
+        <option value="DevOps Engineer">DevOps Engineer</option>
+    </optgroup>
+
+    <optgroup label="6️⃣ AI, Robotics & Advanced Tech">
+        <option value="AI Researcher / Engineer">AI Researcher / Engineer</option>
+        <option value="Robotics Engineer">Robotics Engineer</option>
+        <option value="Computer Vision Engineer">Computer Vision Engineer</option>
+        <option value="NLP Engineer (Natural Language Processing)">NLP Engineer (Natural Language Processing)</option>
+    </optgroup>
+
+    <optgroup label="7️⃣ Testing & Quality">
+        <option value="QA Engineer / Tester">QA Engineer / Tester</option>
+        <option value="Automation Tester (Selenium, Appium)">Automation Tester (Selenium, Appium)</option>
+        <option value="Software Test Engineer in Test (SET)">Software Test Engineer in Test (SET)</option>
+    </optgroup>
+
+    <optgroup label="8️⃣ IT Support & Management">
+        <option value="IT Support Engineer">IT Support Engineer</option>
+        <option value="Technical Support Engineer">Technical Support Engineer</option>
+        <option value="IT Project Manager / Technical Project Manager">IT Project Manager / Technical Project Manager</option>
+        <option value="Product Manager (Tech)">Product Manager (Tech)</option>
+    </optgroup>
+
+    <optgroup label="9️⃣ Other Emerging Roles">
+        <option value="Blockchain Developer">Blockchain Developer</option>
+        <option value="IoT Developer">IoT Developer</option>
+        <option value="AR/VR Developer">AR/VR Developer</option>
+        <option value="Cloud Solutions Architect">Cloud Solutions Architect</option>
+    </optgroup>
+</select>
     </div>
     <div class="mb-3">
         <label>Description</label>
@@ -24,13 +94,17 @@
         <input type="text" th:field="*{location}" class="form-control">
     </div>
     <div class="mb-3">
+        <label>Expirence</label>
+        <input type="text" th:field="*{expirence}" class="form-control">
+    </div>
+    <div class="mb-3">
         <label>Salary</label>
         <input type="text" th:field="*{salary}" class="form-control">
     </div>
     <button type="submit" class="btn btn-primary">Post Job</button>
 </form>
 
-<a class="btn btn-secondary mt-3" th:href="@{/company/dashboard}">← Back to Dashboard</a>
+
 
 </body>
 </html>
